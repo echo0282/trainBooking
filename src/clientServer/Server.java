@@ -63,14 +63,18 @@ public class Server {
 	}
 	
 	public String displayMenu(){
-		return "Please select a route: Cork(1), Galway(2), Belfast(3)";
+		return "Please select a route: Cork(1), Galway(2) or Belfast(3)";
 	}
 	public List<Route> getRoutes(){
 		return routes;
 	}
 	
-	public void bookASeat(int route) throws IllegalArgumentException{
+	public synchronized void bookASeat(int route) throws IllegalArgumentException{
 		routes.get(route).bookASeat();
+	}
+	
+	public String getRouteDestination(int route){
+		return routes.get(route).getDestination();
 	}
 }
 

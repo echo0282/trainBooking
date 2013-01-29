@@ -26,13 +26,15 @@ public class Communication {
 		}
 	else if (state == MENU_DISPLAYED){
 		if (input.equals("1")||input.equals("2")||input.equals("3")){
-			int selectedRoute = Integer.parseInt(input);
+			int selectedRoute = Integer.parseInt(input) - 1;
 			try{
 				server.bookASeat(selectedRoute);
-				output = "Seat successfully booked! Would you like to book another route? (Y/N)";
+				output = "Ticket to "+server.getRouteDestination(selectedRoute)+
+						" successfully booked! Would you like to book another route? (Y/N)";
 				state = ROUTE_CHOSEN;
 			} catch (IllegalArgumentException e){
-				output = e.getMessage();
+				output = e.getMessage()+". Would you like to book another route? (Y/N)";
+				state = ROUTE_CHOSEN;
 			}
 		}
 		else{
@@ -46,7 +48,7 @@ public class Communication {
 			state = MENU_DISPLAYED;
 		}
 		else
-			output = "Bye";
+			output = "Bye.";
 	}
 		return output;
 	}

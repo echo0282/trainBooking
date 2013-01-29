@@ -6,14 +6,14 @@ import java.net.*;
 public class Client {
     public static void main(String[] args) throws IOException {
  
-        Socket kkSocket = null;
+        Socket socket = null;
         PrintWriter out = null;
         BufferedReader in = null;
  
         try {
-            kkSocket = new Socket("127.0.0.1", 5005);
-            out = new PrintWriter(kkSocket.getOutputStream(), true);
-            in = new BufferedReader(new InputStreamReader(kkSocket.getInputStream()));
+            socket = new Socket("127.0.0.1", 5005);
+            out = new PrintWriter(socket.getOutputStream(), true);
+            in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         } catch (UnknownHostException e) {
             System.err.println("Don't know about host: 127.0.0.1");
             System.exit(1);
@@ -25,9 +25,9 @@ public class Client {
         BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
         String fromServer;
         String fromUser;
- 
+        
         while ((fromServer = in.readLine()) != null) {
-            System.out.println("Ticket Booking System: " + fromServer);
+            System.out.println(fromServer);
             if (fromServer.equals("Bye."))
                 break;
              
@@ -40,6 +40,6 @@ public class Client {
         out.close();
         in.close();
         stdIn.close();
-        kkSocket.close();
+        socket.close();
     }
 }

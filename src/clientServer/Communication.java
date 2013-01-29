@@ -6,8 +6,9 @@ import java.util.List;
 public class Communication {
 	
 	private static final int  CLIENT_CONNECT = 0;
-	private static final int MENU_DISPLAYED = 1;
-	private static final int ROUTE_CHOSEN = 2;
+	private static final int DISPLAY_MENU = 1;
+	private static final int MENU_DISPLAYED = 2;
+	private static final int ROUTE_CHOSEN = 3;
 
 	private Server server;
 	
@@ -21,7 +22,8 @@ public class Communication {
 	public String processInput(String input){
 		String output = null;
 	if (state == CLIENT_CONNECT){
-			output = server.displayMenu();
+			output = "Please enter the route that you wish to book a ticket for using the following " +
+					"route numbers: Cork(1), Galway(2) or Belfast(3).";
 			state = MENU_DISPLAYED;
 		}
 	else if (state == MENU_DISPLAYED){

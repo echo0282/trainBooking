@@ -11,7 +11,7 @@ public class Client {
         BufferedReader in = null;
  
         try {
-            kkSocket = new Socket("127.0.0.1", 4444);
+            kkSocket = new Socket("127.0.0.1", 5005);
             out = new PrintWriter(kkSocket.getOutputStream(), true);
             in = new BufferedReader(new InputStreamReader(kkSocket.getInputStream()));
         } catch (UnknownHostException e) {
@@ -27,7 +27,7 @@ public class Client {
         String fromUser;
  
         while ((fromServer = in.readLine()) != null) {
-            System.out.println("Server: " + fromServer);
+            System.out.println("Ticket Booking System: " + fromServer);
             if (fromServer.equals("Bye."))
                 break;
              

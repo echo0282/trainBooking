@@ -15,10 +15,10 @@ public class Client {
             out = new PrintWriter(kkSocket.getOutputStream(), true);
             in = new BufferedReader(new InputStreamReader(kkSocket.getInputStream()));
         } catch (UnknownHostException e) {
-            System.err.println("Don't know about host: taranis.");
+            System.err.println("Don't know about host: 127.0.0.1");
             System.exit(1);
         } catch (IOException e) {
-            System.err.println("Couldn't get I/O for the connection to: taranis.");
+            System.err.println("Couldn't get I/O for the connection to 127.0.0.1");
             System.exit(1);
         }
  

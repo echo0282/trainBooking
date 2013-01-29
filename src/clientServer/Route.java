@@ -9,7 +9,7 @@ public class Route {
 		this.destination = destination;
 	}
 	
-	public void bookASeat() throws IllegalArgumentException{
+	public synchronized void bookASeat() throws IllegalArgumentException{
 		if (spacesAvailable > 0)
 			spacesAvailable--;
 		else

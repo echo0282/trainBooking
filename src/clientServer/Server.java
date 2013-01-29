@@ -41,7 +41,7 @@ public class Server {
 		return routes;
 	}
 	
-	public synchronized void bookASeat(int route) throws IllegalArgumentException{
+	public void bookASeat(int route) throws IllegalArgumentException{
 		routes.get(route).bookASeat();
 	}
 	

@@ -1,9 +1,19 @@
 package clientServer;
 
 	import java.net.*;
-	import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.io.*;
 	 
 	public class Server {
+		
+		private List<Route> routes = new ArrayList<Route>() {{
+			add(new Route("Cork"));
+			add(new Route("Galway"));
+			add(new Route("Belfast"));
+		}};
+		
+		
 	    public static void main(String[] args) throws IOException {
 	 
 	        ServerSocket serverSocket = null;

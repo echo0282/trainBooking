@@ -25,8 +25,10 @@ import java.io.*;
 	        }
 	 
 	        Socket clientSocket = null;
-	        try {
+	        try {	            
+	        	System.out.println("Waiting on connection...");
 	            clientSocket = serverSocket.accept();
+	            System.out.println("Client connected!");
 	        } catch (IOException e) {
 	            System.err.println("Accept failed.");
 	            System.exit(1);

@@ -20,8 +20,6 @@ public class MultiServer extends Thread{
 	@Override
 	public void run() {
 
-		boolean justConnected = true;
-
 		try {
 			System.out.println("Client Connected!");
 			PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
@@ -45,7 +43,7 @@ public class MultiServer extends Thread{
 			socket.close();
 
 		} catch (IOException e) {
-			e.printStackTrace();
+			System.out.println("Client "+e.getMessage());
 		}
 	}		
 }

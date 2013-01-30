@@ -40,8 +40,7 @@ public class Communication {
 			}
 		}
 		else{
-			state = CLIENT_CONNECT;
-			output = "Invalid route number entered. Please try again!";
+			output = "Invalid route number entered. Press to try again! Cork(1), Galway(2) or Belfast(3)";
 			}
 		}
 	else if (state == ROUTE_CHOSEN){

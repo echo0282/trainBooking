@@ -25,7 +25,7 @@ public class Client {
         BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
         String fromServer;
         String fromUser;
-        System.out.println("*********Welcome to the Train Ticket Booking System*******");
+        System.out.println("\t\t*********Welcome to the Train Ticket Booking System*******");
         while ((fromServer = in.readLine()) != null) {
             System.out.println("Booking System: "+fromServer);
             if (fromServer.equals("Bye."))

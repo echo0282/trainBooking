@@ -1,5 +1,7 @@
 package clientServer;
 
+import java.rmi.RemoteException;
+
 
 
 public class Communication {
@@ -17,7 +19,7 @@ public class Communication {
 		this.server = server;
 	}
 	
-	public String processInput(String input){
+	public String processInput(String input) throws RemoteException{
 		String output = null;
 	if (state == CLIENT_CONNECT){
 			output = "Please enter the route that you wish to book a ticket for using the following " +

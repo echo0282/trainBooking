@@ -1,14 +1,16 @@
 package clientServer;
 
-import java.net.*;
+import java.rmi.registry.Registry;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.server.UnicastRemoteObject;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.*;
 
-public class Server {
+public class Server implements BookingInterface{
 
 	private List<Route> routes = new ArrayList<Route>();
-	private ServerSocket serverSocket;
 
 	public Server(){
 		routes.add(new Route("Cork"));
@@ -16,36 +18,24 @@ public class Server {
 		routes.add(new Route("Belfast"));
 	}
 
-	public void openSocket() throws IOException{
-		serverSocket = null;
-		boolean listening = true;
-		try {
-			serverSocket = new ServerSocket(5005);
-		} catch (IOException e) {
-			System.err.println("Could not listen on port: 5005.");
-			System.exit(-1);
-		}
-		System.out.println("Waiting for a client connection....");
-		while (listening)
-			new MultiServer(serverSocket.accept(), this).start();
-		
-		serverSocket.close();
-	}
 
 	public static void main(String[] args) throws IOException {
-		Server server = new Server();
-		server.openSocket();
+		try{
+			Server server = new Server();
+			BookingInterface stub = (BookingInterface) UnicastRemoteObject.exportObject(server, 0);
+			Registry registry = LocateRegistry.getRegistry();
+			registry.bind("BookingInterface", stub);
+		} catch (Exception e){
+			System.err.println("Server error:"+e.toString());
+		}
 	}
-	
-	public List<Route> getRoutes(){
-		return routes;
-	}
-	
-	public void bookASeat(int route) throws IllegalArgumentException{
+
+
+	public void bookASeat(int route) throws IllegalArgumentException, RemoteException{
 		routes.get(route).bookASeat();
 	}
-	
-	public String getRouteDestination(int route){
+
+	public String getRouteDestination(int route) throws RemoteException{
 		return routes.get(route).getDestination();
 	}
 }

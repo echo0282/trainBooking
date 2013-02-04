@@ -1,14 +1,12 @@
 package clientServer;
 
-import java.util.ArrayList;
-import java.util.List;
+
 
 public class Communication {
 	
 	private static final int  CLIENT_CONNECT = 0;
-	private static final int DISPLAY_MENU = 1;
-	private static final int MENU_DISPLAYED = 2;
-	private static final int ROUTE_CHOSEN = 3;
+	private static final int MENU_DISPLAYED = 1;
+	private static final int ROUTE_CHOSEN = 2;
 
 	private Server server;
 	

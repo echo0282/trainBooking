@@ -30,13 +30,20 @@ public class Server implements BookingInterface{
 		}
 	}
 
-
+	@Override
 	public void bookASeat(int route) throws IllegalArgumentException, RemoteException{
 		routes.get(route).bookASeat();
 	}
-
+	
+	@Override
 	public String getRouteDestination(int route) throws RemoteException{
 		return routes.get(route).getDestination();
+	}
+
+
+	@Override
+	public List<Route> getRoutes() throws RemoteException {
+		return routes;
 	}
 }
 

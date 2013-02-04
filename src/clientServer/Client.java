@@ -14,6 +14,7 @@ public class Client {
     public static void main(String[] args) {
     	Client client = new Client();
     	client.openConnection();
+    	client.printMenu();
 
     }
     
@@ -31,7 +32,7 @@ public class Client {
     	System.out.println("*********Welcome to the Train Booking System***********");
     	System.out.println("Please select a route by entering the corresponding route number: ");
     	for (int i = 0; i < routes.size(); i++){
-    		System.out.print(routes.get(i).getDestination()+"("+i+")\t");
+    		System.out.print(routes.get(i).getDestination()+"("+(i+1)+")\t");
     	}
     }
 }

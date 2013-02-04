@@ -1,6 +1,8 @@
 package clientServer;
 
-public class Route {
+import java.io.Serializable;
+
+public class Route implements Serializable{
 	
 	private String destination;
 	private int spacesAvailable = 3;

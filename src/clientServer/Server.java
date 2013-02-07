@@ -29,6 +29,7 @@ public class Server implements BookingInterface{
 		} catch (Exception e){
 			System.err.println("Server error:"+e.toString());
 		}
+		System.out.println("Server running, waiting on client connection....");
 	}
 
 	@Override

@@ -14,18 +14,19 @@ public class Client {
     public static void main(String[] args) {
     	Client client = new Client();
     	client.openConnection();
-    	client.printMenu();
-
     }
     
     public void openConnection(){
+    	BookingInterface stub;
     	try{
-    		Registry registry = LocateRegistry.getRegistry("localhost");
-    		BookingInterface stub = (BookingInterface) registry.lookup("BookingInterface");
-    		routes = stub.getRoutes();		
+    		Registry registry = LocateRegistry.getRegistry("localhost", 0);
+    		stub = (BookingInterface) registry.lookup("BookingInterface");
+    		routes = stub.getRoutes();	
     	} catch (Exception e){
     		System.err.println("Client exception: "+e.toString());
+    		return;
     	}
+    	printMenu();
     }
     
     public void printMenu(){

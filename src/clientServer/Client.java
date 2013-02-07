@@ -33,7 +33,7 @@ public class Client {
     	System.out.println("\t\t*********Welcome to the Train Booking System***********");
     	System.out.println("Please select a route by entering the corresponding route number: ");
     	for (int i = 0; i < routes.size(); i++){
-    		System.out.println(routes.get(i).getDestination()+"("+(i+1)+")");
+    		System.out.println(routes.get(i).getDestination()+" ("+(i+1)+")");
     	}
     }
 }

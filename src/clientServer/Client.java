@@ -22,11 +22,11 @@ public class Client {
     		Registry registry = LocateRegistry.getRegistry("localhost", 0);
     		stub = (BookingInterface) registry.lookup("BookingInterface");
     		routes = stub.getRoutes();	
+    		printMenu();
     	} catch (Exception e){
     		System.err.println("Client exception: "+e.toString());
     		return;
     	}
-    	printMenu();
     }
     
     public void printMenu(){

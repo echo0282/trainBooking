@@ -26,10 +26,10 @@ public class Server implements BookingInterface{
 			Registry registry = LocateRegistry.createRegistry(0);
 			//Registry registry = LocateRegistry.getRegistry();
 			registry.bind("BookingInterface", stub);
+			System.out.println("Server running, waiting on client connection....");
 		} catch (Exception e){
 			System.err.println("Server error:"+e.toString());
 		}
-		System.out.println("Server running, waiting on client connection....");
 	}
 
 	@Override

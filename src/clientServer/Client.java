@@ -19,7 +19,7 @@ public class Client {
     public void openConnection(){
     	BookingInterface stub;
     	try{
-    		Registry registry = LocateRegistry.getRegistry("localhost", 0);
+    		Registry registry = LocateRegistry.getRegistry("localhost", 5005);
     		stub = (BookingInterface) registry.lookup("BookingInterface");
     		routes = stub.getRoutes();	
     		printMenu();
@@ -30,10 +30,10 @@ public class Client {
     }
     
     public void printMenu(){
-    	System.out.println("*********Welcome to the Train Booking System***********");
+    	System.out.println("\t\t*********Welcome to the Train Booking System***********");
     	System.out.println("Please select a route by entering the corresponding route number: ");
     	for (int i = 0; i < routes.size(); i++){
-    		System.out.print(routes.get(i).getDestination()+"("+(i+1)+")\t");
+    		System.out.println(routes.get(i).getDestination()+"("+(i+1)+")");
     	}
     }
 }

@@ -44,10 +44,16 @@ public class Client {
     	parseUserInput();
     }
     
-    private void parseUserInput() throws IOException{
+    private void parseUserInput() throws IOException {
     	String selectedRoute = in.readLine();
-    	int route = Integer.parseInt(selectedRoute);
-    	if (route == 1 || route ==2 || route ==3)
+    	int route = 0;
+    	try{
+    		route = Integer.parseInt(selectedRoute);
+    	} catch(NumberFormatException e){
+    		System.out.println("Invalid route entered! Please try again.");
+    		printMenu();
+    	}
+    	if (route == 1 || route == 2 || route ==3)
     		bookASeat(route - 1);
     	else{
     		System.out.println("Invalid route entered! Please try again.");

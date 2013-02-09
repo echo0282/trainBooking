@@ -11,11 +11,11 @@ public class Route implements Serializable{
 		this.destination = destination;
 	}
 	
-	public synchronized void bookASeat() throws IllegalArgumentException{
+	public synchronized void bookASeat() throws FullyBookedException{
 		if (spacesAvailable > 0)
 			spacesAvailable--;
 		else
-			throw new IllegalArgumentException("Sorry, this route is fully booked");
+			throw new FullyBookedException("Sorry, this route is fully booked");
 	}
 	
 	public String getDestination(){

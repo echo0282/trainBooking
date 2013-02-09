@@ -24,7 +24,6 @@ public class Server implements BookingInterface{
 			Server server = new Server();
 			BookingInterface stub = (BookingInterface) UnicastRemoteObject.exportObject(server, 0);
 			Registry registry = LocateRegistry.createRegistry(5005);
-			//Registry registry = LocateRegistry.getRegistry();
 			registry.bind("BookingInterface", stub);
 			System.out.println("Server running, waiting on client connection....");
 		} catch (Exception e){
@@ -33,7 +32,7 @@ public class Server implements BookingInterface{
 	}
 
 	@Override
-	public void bookASeat(int route) throws IllegalArgumentException, RemoteException{
+	public void bookASeat(int route) throws FullyBookedException, RemoteException{
 		routes.get(route).bookASeat();
 	}
 	

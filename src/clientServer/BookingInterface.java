@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface BookingInterface extends Remote {
 	
-	public void bookASeat(int route) throws IllegalArgumentException, RemoteException;
+	public void bookASeat(int route) throws FullyBookedException, RemoteException;
 	
 	public String getRouteDestination(int route) throws RemoteException;
 	

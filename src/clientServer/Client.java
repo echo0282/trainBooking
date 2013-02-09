@@ -27,6 +27,7 @@ public class Client {
     	try{
     		Registry registry = LocateRegistry.getRegistry("localhost", 5005);
     		stub = (BookingInterface) registry.lookup("BookingInterface");
+        	System.out.println("\t\t*********Welcome to the Train Booking System***********");
     		printMenu();
     	} catch (Exception e){
     		System.err.println("Client exception: "+e.toString());
@@ -36,7 +37,6 @@ public class Client {
     
     private void printMenu() throws IOException{
     	List<Route> routes = stub.getRoutes();
-    	System.out.println("\t\t*********Welcome to the Train Booking System***********");
     	System.out.println("Please select a route by entering the corresponding route number: ");
     	for (int i = 0; i < routes.size(); i++){
     		System.out.println(routes.get(i).getDestination()+" ("+(i+1)+")");
@@ -48,7 +48,7 @@ public class Client {
     	String selectedRoute = in.readLine();
     	int route = Integer.parseInt(selectedRoute);
     	if (route == 1 || route ==2 || route ==3)
-    		bookASeat(route);
+    		bookASeat(route - 1);
     	else{
     		System.out.println("Invalid route entered! Please try again.");
     		printMenu();
@@ -56,12 +56,27 @@ public class Client {
     	
     }
     
-    private void bookASeat(int route) throws RemoteException{
+    private void bookASeat(int route) throws IOException{
     	try{
     		stub.bookASeat(route);
-    	}catch (IllegalArgumentException e){
+    		System.out.println("Ticket to "+stub.getRouteDestination(route)+" successfully booked!");
+    	}catch (FullyBookedException e){
     		System.out.println(e.getMessage());
     	}
+    	if (anotherTicket()){
+    		printMenu();
+    	}
+    	else{
+    		System.out.println("Goodbye");
+    	}
+    }
+    
+    private boolean anotherTicket() throws IOException{
+    	System.out.println("Do you want to book another ticket? (Y/N)");
+    	String choice = in.readLine();
+    	if (choice.equalsIgnoreCase("Y"))
+    		return true;
+    	return false;
     }
     
 }

@@ -41,7 +41,7 @@ public class Client {
     	System.out.println("Please select a route by entering the corresponding route number: ");
     	for (int i = 0; i < routes.size(); i++){
     		System.out.println(routes.get(i).getDestination()+" ("+(i+1)+") \t\t "+
-    				stub.getSpacesAvailable(i)+" spaces left.");
+    				stub.getSpacesAvailable(i)+" spaces available.");
     	}
     	parseUserInput();
     }

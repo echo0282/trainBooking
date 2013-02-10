@@ -46,5 +46,11 @@ public class Server implements BookingInterface{
 	public List<Route> getRoutes() throws RemoteException {
 		return routes;
 	}
+
+
+	@Override
+	public int getSpacesAvailable(int route) throws RemoteException {
+		return routes.get(route).getSpacesAvailable();
+	}
 }
 

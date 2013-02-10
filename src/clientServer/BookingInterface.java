@@ -12,4 +12,6 @@ public interface BookingInterface extends Remote {
 	
 	public List<Route> getRoutes() throws RemoteException;
 	
+	public int getSpacesAvailable(int route) throws RemoteException;
+	
 }

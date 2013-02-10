@@ -8,6 +8,7 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.List;
+
 public class Client {
 	
 	BookingInterface stub;
@@ -39,7 +40,8 @@ public class Client {
     	List<Route> routes = stub.getRoutes();
     	System.out.println("Please select a route by entering the corresponding route number: ");
     	for (int i = 0; i < routes.size(); i++){
-    		System.out.println(routes.get(i).getDestination()+" ("+(i+1)+")");
+    		System.out.println(routes.get(i).getDestination()+" ("+(i+1)+") \t\t "+
+    				stub.getSpacesAvailable(i)+" spaces left.");
     	}
     	parseUserInput();
     }
@@ -65,7 +67,8 @@ public class Client {
     private void bookASeat(int route) throws IOException{
     	try{
     		stub.bookASeat(route);
-    		System.out.println("Ticket to "+stub.getRouteDestination(route)+" successfully booked!");
+    		System.out.println("Ticket to "+stub.getRouteDestination(route)+" successfully booked! " +
+    				"There are "+stub.getSpacesAvailable(route)+" spaces left on this route.");
     	}catch (FullyBookedException e){
     		System.out.println(e.getMessage());
     	}

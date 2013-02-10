@@ -21,5 +21,9 @@ public class Route implements Serializable{
 	public String getDestination(){
 		return destination;
 	}
+	
+	public int getSpacesAvailable(){
+		return spacesAvailable;
+	}
 
 }

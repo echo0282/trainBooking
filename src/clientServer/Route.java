@@ -22,7 +22,7 @@ public class Route implements Serializable{
 		return destination;
 	}
 	
-	public int getSpacesAvailable(){
+	public synchronized int getSpacesAvailable(){
 		return spacesAvailable;
 	}
 

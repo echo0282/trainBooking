@@ -26,7 +26,7 @@ public class Client {
     
     public void openConnection(){
     	try{
-    		Registry registry = LocateRegistry.getRegistry("localhost", 5005);
+    		Registry registry = LocateRegistry.getRegistry("localhost");
     		stub = (BookingInterface) registry.lookup("BookingInterface");
         	System.out.println("\t\t*********Welcome to the Train Booking System***********");
     		printMenu();

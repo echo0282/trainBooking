@@ -23,7 +23,7 @@ public class Server implements BookingInterface{
 		try{
 			Server server = new Server();
 			BookingInterface stub = (BookingInterface) UnicastRemoteObject.exportObject(server, 0);
-			Registry registry = LocateRegistry.createRegistry(5005);
+			Registry registry = LocateRegistry.getRegistry();
 			registry.bind("BookingInterface", stub);
 			System.out.println("Server running, waiting on client connection....");
 		} catch (Exception e){
